@@ -113,8 +113,8 @@ function VisualizeWorkouts() {
               graphVal === "weight" ? "lbs" : ""
             }<br/>Date: ${d.label.toString().slice(4, 15)}`;
             Tooltip.html(text)
-              .style("left", `${event.layerX + 10}px`)
-              .style("top", `${event.layerY}px`)
+              .style("left", `${Math.max(0, event.layerX + 10)}px`)
+              .style("top", `${Math.max(0, event.layerY)}px`)
               .style("font-size", "medium");
           };
           const mouseleave = function (event, d) {
@@ -126,6 +126,8 @@ function VisualizeWorkouts() {
             .style("opacity", 0)
             .attr("class", "tooltip")
             .style("position", "absolute")
+            .style("left", 0)
+            .style("top", 0)
             .style("color", "black")
             .style("background-color", "white")
             .style("border", "solid")
