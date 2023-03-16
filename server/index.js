@@ -34,19 +34,21 @@ app.use(cookieParser());
 app.get("/",(req,res)=>{
   console.log("/ ok ")
   alert("ok")
-  res.json({status:"ok"});
+  res.status(200).json({status:"ok"});
 })
 
 app.get("/api",(req,res)=>{
   console.log("/api ok ")
-  alert("ok")
-  res.json({status:"ok"});
+  alert("ok")  
+  res.status(200).json({status:"ok"});
+
 })
 
 
 app.get("/api/test",(req,res)=>{
-  console.log("test ok ")
-  res.json({status:"ok"});
+  console.log("test ok ")  
+  res.status(200).json({status:"ok"});
+
 })
 
 app.post("/api/register", (req, res) => {
