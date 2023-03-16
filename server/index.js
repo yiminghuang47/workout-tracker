@@ -1,11 +1,6 @@
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config({ path: __dirname + "/.env" });
-}
-
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const path = require("path");
 app.use(
   cors({
     origin: "http://localhost:3000/",
@@ -15,20 +10,14 @@ app.use(
 app.use(express.json());
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-
-const port = process.env.API_PORT || 1337;
-
 const User = require("./models/User");
-//require("dotenv").config();
+require("dotenv").config();
 
-mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    app.listen(port);
-  });
+
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
@@ -41,22 +30,26 @@ const Workout = require("./models/Workout");
 const { json } = require("body-parser");
 app.use(cookieParser());
 
-app.get("/", (req, res) => {
-  console.log("/ ok ");
-  alert("ok");
-  res.status(200).json({ status: "ok" });
-});
 
-app.get("/api", (req, res) => {
-  console.log("/api ok ");
-  alert("ok");
-  res.status(200).json({ status: "ok" });
-});
+app.get("/",(req,res)=>{
+  console.log("/ ok ")
+  alert("ok")
+  res.status(200).json({status:"ok"});
+})
 
-app.get("/api/test", (req, res) => {
-  console.log("test ok ");
-  res.status(200).json({ status: "ok" });
-});
+app.get("/api",(req,res)=>{
+  console.log("/api ok ")
+  alert("ok")  
+  res.status(200).json({status:"ok"});
+
+})
+
+
+app.get("/api/test",(req,res)=>{
+  console.log("test ok ")  
+  res.status(200).json({status:"ok"});
+
+})
 
 app.post("/api/register", (req, res) => {
   const { username, password } = req.body;
@@ -165,10 +158,9 @@ app.delete("/api/workouts/:workout_id", (req, res) => {
     );
 });
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client', 'build')));
-  app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client', 'build', 'index.html'));
-  })
+if (process.env.API_PORT) {
+  const listener = app.listen(process.env.API_PORT, () => {
+    console.log("Your app is listening on port " + process.env.API_PORT);
+  });
 }
 module.exports = app;
