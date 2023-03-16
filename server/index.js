@@ -9,6 +9,7 @@ app.use(
 );
 console.log(__dirname);
 console.log("test");
+console.log(process.cwd());
 app.use(express.json());
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
