@@ -37,7 +37,7 @@ const { json } = require("body-parser");
 app.use(cookieParser());
 
 
-app.get("/api", (req, res) => {
+app.get("https://workout-tracker-wqsv.vercel.app/api", (req, res) => {
   console.log("/api ok ");
   alert("ok");
   res.status(200).json({ status: "ok" });
