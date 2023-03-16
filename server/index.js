@@ -29,7 +29,7 @@ const Workout = require("./models/Workout");
 const { json } = require("body-parser");
 app.use(cookieParser());
 
-app.post("/register", (req, res) => {
+app.post("/api/register", (req, res) => {
   const { username, password } = req.body;
   bcrypt.hash(password, saltRounds, function (err, hash) {
     // Store hash in your password DB.
@@ -45,7 +45,7 @@ app.post("/register", (req, res) => {
   });
 });
 
-app.post("/login", (req, res) => {
+app.post("/api/login", (req, res) => {
   const { username, password } = req.body;
   User.findOne({ username })
     .then((doc) => {
@@ -72,7 +72,7 @@ app.post("/login", (req, res) => {
       res.status(404).json({ error: "Login failed" });
     });
 });
-app.get("/profile", (req, res) => {
+app.get("/api/profile", (req, res) => {
   const { token } = req.cookies;
   jwt.verify(token, secret, {}, (err, info) => {
     if (err) {
@@ -84,7 +84,7 @@ app.get("/profile", (req, res) => {
   });
 });
 
-app.post("/logout", (req, res) => {
+app.post("/api/logout", (req, res) => {
   res.cookie("token", "").json("ok");
 });
 
@@ -96,7 +96,7 @@ function capitalizeWords(str) {
     .join(' ');
 }
 
-app.post("/create", (req, res) => {
+app.post("/api/create", (req, res) => {
   const { user_id, name, reps, sets, weight } = req.body;
   formatted_name = trim(capitalizeWords(name))
 
@@ -111,7 +111,7 @@ app.post("/create", (req, res) => {
     .catch((err) => res.status(404).json({ error: "Error creating workout" }));
 });
 
-app.get("/workouts/:user_id", (req, res) => {
+app.get("/api/workouts/:user_id", (req, res) => {
   //get workouts for user with id.
   Workout.find({ user_id: req.params.user_id })
     .then((doc) => {
@@ -124,7 +124,7 @@ app.get("/workouts/:user_id", (req, res) => {
     });
 });
 
-app.delete("/workouts/:workout_id", (req, res) => {
+app.delete("/api/workouts/:workout_id", (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.workout_id)) {
     res.status(404).json({ error: "Invalid workout id" });
     return;
@@ -139,3 +139,5 @@ app.delete("/workouts/:workout_id", (req, res) => {
 const listener = app.listen(1337, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
+
+module.exports = app

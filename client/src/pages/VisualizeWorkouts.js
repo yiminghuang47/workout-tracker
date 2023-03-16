@@ -14,7 +14,7 @@ function VisualizeWorkouts() {
       setIsLoading(true);
 
       const response = await fetch(
-        "http://localhost:1337/workouts/" + userInfo.id,
+        "http://localhost:1337/api/workouts/" + userInfo.id,
         { method: "GET" }
       );
       setIsLoading(false);
