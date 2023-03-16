@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 app.use(
   cors({
-    origin: process.env.REACT_APP_API_URL,
+    origin: "http://localhost:3000/",
     credentials: true,
   })
 );
@@ -33,11 +33,13 @@ app.use(cookieParser());
 
 app.get("/",(req,res)=>{
   console.log("/ ok ")
+  alert("ok")
   res.json({status:"ok"});
 })
 
 app.get("/api",(req,res)=>{
   console.log("/api ok ")
+  alert("ok")
   res.json({status:"ok"});
 })
 
