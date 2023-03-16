@@ -7,12 +7,13 @@ app.use(
     credentials: true,
   })
 );
+console.log(__dirname);
+console.log("test");
 app.use(express.json());
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const User = require("./models/User");
 require("dotenv").config();
-
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
@@ -30,26 +31,22 @@ const Workout = require("./models/Workout");
 const { json } = require("body-parser");
 app.use(cookieParser());
 
+app.get("/", (req, res) => {
+  console.log("/ ok ");
+  alert("ok");
+  res.status(200).json({ status: "ok" });
+});
 
-app.get("/",(req,res)=>{
-  console.log("/ ok ")
-  alert("ok")
-  res.status(200).json({status:"ok"});
-})
+app.get("/api", (req, res) => {
+  console.log("/api ok ");
+  alert("ok");
+  res.status(200).json({ status: "ok" });
+});
 
-app.get("/api",(req,res)=>{
-  console.log("/api ok ")
-  alert("ok")  
-  res.status(200).json({status:"ok"});
-
-})
-
-
-app.get("/api/test",(req,res)=>{
-  console.log("test ok ")  
-  res.status(200).json({status:"ok"});
-
-})
+app.get("/api/test", (req, res) => {
+  console.log("test ok ");
+  res.status(200).json({ status: "ok" });
+});
 
 app.post("/api/register", (req, res) => {
   const { username, password } = req.body;
