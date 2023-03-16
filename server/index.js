@@ -36,6 +36,11 @@ app.get("/",(req,res)=>{
   res.json({status:"ok"});
 })
 
+app.get("/api",(req,res)=>{
+  console.log("/api ok ")
+  res.json({status:"ok"});
+})
+
 
 app.get("/api/test",(req,res)=>{
   console.log("test ok ")
