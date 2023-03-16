@@ -14,7 +14,7 @@ function VisualizeWorkouts() {
       setIsLoading(true);
 
       const response = await fetch(
-        `${process.env.API_URL}/workouts/` + userInfo.id,
+        `${process.env.REACT_APP_API_URL}/workouts/` + userInfo.id,
         { method: "GET" }
       );
       setIsLoading(false);

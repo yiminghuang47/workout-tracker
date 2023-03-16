@@ -8,7 +8,7 @@ function Login() {
   const { setUserInfo } = useContext(UserContext);
   async function login(e) {
     e.preventDefault();
-    const response = await fetch(`${process.env.API_URL}/login`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
       method: "POST",
       body: JSON.stringify({ username, password }),
       headers: { "Content-Type": "application/json" },

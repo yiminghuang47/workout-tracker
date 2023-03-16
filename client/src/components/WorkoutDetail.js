@@ -7,7 +7,7 @@ function WorkoutDetail({workout}) {
   async function deleteWorkout(e){
     e.preventDefault();
     console.log(workout._id);
-    const response = await fetch(`${process.env.API_URL}/workouts/`+workout._id,{
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/workouts/`+workout._id,{
       method: "DELETE"
     });
     const json = await response.json();
