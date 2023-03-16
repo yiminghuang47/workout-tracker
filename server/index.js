@@ -31,6 +31,12 @@ const { json } = require("body-parser");
 app.use(cookieParser());
 
 
+app.get("/",(req,res)=>{
+  console.log("/ ok ")
+  res.json({status:"ok"});
+})
+
+
 app.get("/api/test",(req,res)=>{
   console.log("test ok ")
   res.json({status:"ok"});
