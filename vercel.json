@@ -4,6 +4,7 @@
     {
       "source": "/api/(.*)",
       "destination": "/server"
+      
     }
   ]
 }
