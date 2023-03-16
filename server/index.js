@@ -32,6 +32,7 @@ app.use(cookieParser());
 
 
 app.get("/api/test",(req,res)=>{
+  console.log("test ok ")
   res.json({status:"ok"});
 })
 
