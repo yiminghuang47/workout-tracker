@@ -20,7 +20,7 @@ function WorkoutForm() {
       alert("Please fill in all fields");
       return;
     }
-    const response = await fetch("http://localhost:1337/api/create", {
+    const response = await fetch(`${process.env.API_URL}/create`, {
       method: "POST",
       body: JSON.stringify(workout),
       headers: {

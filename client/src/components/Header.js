@@ -7,7 +7,7 @@ function Header() {
   const [redirect,setRedirect] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:1337/api/profile", { credentials: "include" })
+    fetch(`${process.env.API_URL}/profile`, { credentials: "include" })
       .then((response) => {
         if (response.ok) {
           response
@@ -23,7 +23,7 @@ function Header() {
 
   async function logout(e) {
     e.preventDefault();
-    await fetch("http://localhost:1337/api/logout", {
+    await fetch(`${process.env.API_URL}/logout`, {
       credentials: "include",
       method: "POST",
     });

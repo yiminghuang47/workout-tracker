@@ -13,7 +13,7 @@ function Workouts() {
       setIsLoading(true);
 
       const response = await fetch(
-        "http://localhost:1337/api/workouts/" + userInfo.id,
+        `${process.env.API_URL}/workouts/` + userInfo.id,
         { method: "GET" }
       );
       setIsLoading(false);

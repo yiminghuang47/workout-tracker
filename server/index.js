@@ -40,7 +40,7 @@ app.post("/api/register", (req, res) => {
       })
       .catch((err) => {
         res.status(404).json(err);
-        console.log({err: "Registration failed"});
+        console.log({ err: "Registration failed" });
       });
   });
 });
@@ -54,7 +54,7 @@ app.post("/api/login", (req, res) => {
       bcrypt.compare(password, doc.password).then(function (result) {
         if (result) {
           jwt.sign({ username, id: doc._id }, secret, {}, (err, token) => {
-            if (err) res.status(404).json({err: "Login error"});
+            if (err) res.status(404).json({ err: "Login error" });
             else {
               res.cookie("token", token).json({
                 id: doc._id,
@@ -91,14 +91,14 @@ app.post("/api/logout", (req, res) => {
 function capitalizeWords(str) {
   return str
     .toLowerCase()
-    .split(' ')
+    .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
+    .join(" ");
 }
 
 app.post("/api/create", (req, res) => {
   const { user_id, name, reps, sets, weight } = req.body;
-  formatted_name = trim(capitalizeWords(name))
+  formatted_name = trim(capitalizeWords(name));
 
   Workout.create({
     user_id,
@@ -136,8 +136,9 @@ app.delete("/api/workouts/:workout_id", (req, res) => {
     );
 });
 
-const listener = app.listen(1337, () => {
-  console.log("Your app is listening on port " + listener.address().port);
-});
-
-module.exports = app
+if (process.env.API_PORT) {
+  const listener = app.listen(process.env.API_PORT, () => {
+    console.log("Your app is listening on port " + process.env.API_PORT);
+  });
+}
+module.exports = app;
