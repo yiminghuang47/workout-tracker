@@ -30,6 +30,11 @@ const Workout = require("./models/Workout");
 const { json } = require("body-parser");
 app.use(cookieParser());
 
+
+app.get("/api/test",(req,res)=>{
+  res.json({status:"ok"});
+})
+
 app.post("/api/register", (req, res) => {
   const { username, password } = req.body;
   bcrypt.hash(password, saltRounds, function (err, hash) {
