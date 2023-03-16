@@ -10,6 +10,7 @@ app.use(
 console.log(__dirname);
 console.log("test");
 console.log(process.cwd());
+
 app.use(express.json());
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -32,11 +33,6 @@ const Workout = require("./models/Workout");
 const { json } = require("body-parser");
 app.use(cookieParser());
 
-app.get("/", (req, res) => {
-  console.log("/ ok ");
-  alert("ok");
-  res.status(200).json({ status: "ok" });
-});
 
 app.get("/api", (req, res) => {
   console.log("/api ok ");
