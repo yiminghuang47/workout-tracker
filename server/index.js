@@ -156,9 +156,9 @@ app.delete("/api/workouts/:workout_id", (req, res) => {
     );
 });
 
-if (process.env.API_PORT) {
-  const listener = app.listen(process.env.API_PORT, () => {
-    console.log("Your app is listening on port " + process.env.API_PORT);
+if (process.env.REACT_APP_API_PORT) {
+  const listener = app.listen(process.env.REACT_APP_API_PORT, () => {
+    console.log("Your app is listening on port " + process.env.REACT_APP_API_PORT);
   });
 }
 module.exports = app;
