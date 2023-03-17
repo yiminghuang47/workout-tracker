@@ -17,7 +17,9 @@ function Login() {
     });
     if (response.ok) {
       response.json().then((userInfo) => {
-        setUserInfo(userInfo);
+        setUserInfo({id: userInfo._id,
+          username: userInfo.username});
+        document.cookie = userInfo.cookie;
 
         alert("Login sucessful");
 

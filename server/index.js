@@ -67,6 +67,9 @@ app.post("/api/login", (req, res) => {
             if (err) res.status(404).json({ err: "Login error" });
             else {
               console.log(token)
+              res.json({cookie: `token=${token}`,id: doc._id,
+              username: username,})
+              /*
               res.cookie("token", token, { 
                 domain: "https://gym-track.vercel.app/", 
                 path: "/"
@@ -74,6 +77,7 @@ app.post("/api/login", (req, res) => {
                 id: doc._id,
                 username: username,
               });
+              */
             }
           });
         } else {
