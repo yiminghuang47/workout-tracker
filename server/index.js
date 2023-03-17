@@ -9,7 +9,7 @@ app.use(
   })
 );
 */
-app.use(cors())
+app.use(cors());
 console.log(__dirname);
 console.log("test");
 console.log(process.cwd());
@@ -35,7 +35,6 @@ const cookieParser = require("cookie-parser");
 const Workout = require("./models/Workout");
 const { json } = require("body-parser");
 app.use(cookieParser());
-
 
 app.get("https://workout-tracker-server-three.vercel.app/api", (req, res) => {
   console.log("/api ok ");
@@ -155,11 +154,8 @@ app.delete("/api/workouts/:workout_id", (req, res) => {
     );
 });
 
-
-port = REACT_APP_API_PORT || 1337;
-if (process.env.REACT_APP_API_PORT) {
-  const listener = app.listen(port, () => {
-    console.log("Your app is listening on port " + port);
-  });
-}
+port = process.env.REACT_APP_API_PORT || 1337;
+app.listen(port, () => {
+  console.log("Your app is listening on port " + port);
+});
 module.exports = app;
