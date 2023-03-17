@@ -66,6 +66,7 @@ app.post("/api/login", (req, res) => {
           jwt.sign({ username, id: doc._id }, secret, {}, (err, token) => {
             if (err) res.status(404).json({ err: "Login error" });
             else {
+              console.log(token)
               res.cookie("token", token, { 
                 domain: "https://gym-track.vercel.app", 
                 path: "/"
