@@ -68,7 +68,7 @@ app.post("/api/login", (req, res) => {
             else {
               console.log(token)
               res.cookie("token", token, { 
-                domain: "https://gym-track.vercel.app", 
+                domain: "https://gym-track.vercel.app/", 
                 path: "/"
               }).json({
                 id: doc._id,
