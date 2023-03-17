@@ -4,7 +4,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "gym-track.vercel.app",
+    origin: "https://gym-track.vercel.app",
     credentials: true,
   })
 );
