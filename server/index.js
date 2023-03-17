@@ -9,7 +9,6 @@ app.use(
   })
 );
 
-app.use(cors());
 console.log(__dirname);
 console.log("test");
 console.log(process.cwd());
