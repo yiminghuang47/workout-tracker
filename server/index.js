@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 
 
-const allowedOrigins = ["https://gym-track.vercel.app","http://localhost:3000"];
+const allowedOrigins = ["https://gym-track.vercel.app","http://localhost:3000","https://gym-track-server.vercel.app"];
 
 const corsOptions = {
   origin: allowedOrigins,
