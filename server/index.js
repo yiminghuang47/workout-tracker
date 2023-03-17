@@ -1,14 +1,14 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-/*
+
 app.use(
   cors({
-    origin: process.env.REACT_APP_API_URL,
+    origin: "gym-track.vercel.app",
     credentials: true,
   })
 );
-*/
+
 app.use(cors());
 console.log(__dirname);
 console.log("test");
