@@ -9,7 +9,7 @@ app.use(
   })
 );
 */
-app.use(cors)
+app.use(cors())
 console.log(__dirname);
 console.log("test");
 console.log(process.cwd());
@@ -37,7 +37,7 @@ const { json } = require("body-parser");
 app.use(cookieParser());
 
 
-app.get("https://workout-tracker-wqsv.vercel.app/api", (req, res) => {
+app.get("https://workout-tracker-server-three.vercel.app/api", (req, res) => {
   console.log("/api ok ");
   alert("ok");
   res.status(200).json({ status: "ok" });
