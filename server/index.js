@@ -2,16 +2,15 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 
-app.use(
-  cors({
-    origin: "https://gym-track.vercel.app",
-    credentials: true,
-  },{
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
 
+const allowedOrigins = ["https://gym-track.vercel.app","http://localhost:3000"];
+
+const corsOptions = {
+  origin: allowedOrigins,
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 const bodyParser = require("body-parser");
