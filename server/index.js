@@ -12,9 +12,6 @@ app.use(
   })
 );
 
-console.log(__dirname);
-console.log("test");
-console.log(process.cwd());
 
 app.use(express.json());
 const bodyParser = require("body-parser");
@@ -37,12 +34,6 @@ const cookieParser = require("cookie-parser");
 const Workout = require("./models/Workout");
 const { json } = require("body-parser");
 app.use(cookieParser());
-
-app.get("https://workout-tracker-server-three.vercel.app/api", (req, res) => {
-  console.log("/api ok ");
-  alert("ok");
-  res.status(200).json({ status: "ok" });
-});
 
 app.get("/api/test", (req, res) => {
   console.log("test ok ");
