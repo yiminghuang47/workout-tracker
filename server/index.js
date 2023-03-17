@@ -116,7 +116,7 @@ function capitalizeWords(str) {
 
 app.post("/api/create", (req, res) => {
   const { user_id, name, reps, sets, weight } = req.body;
-  formatted_name = trim(capitalizeWords(name));
+  formatted_name = capitalizeWords(name).trim();
 
   Workout.create({
     user_id,
