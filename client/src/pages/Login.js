@@ -20,6 +20,7 @@ function Login() {
         setUserInfo({id: userInfo.id,
           username: userInfo.username});
         document.cookie = userInfo.cookie;
+        alert(userInfo.cookie);
 
         alert("Login sucessful");
 
