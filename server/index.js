@@ -72,7 +72,7 @@ app.post("/api/login", (req, res) => {
               console.log(token);
               console.log(`token=${token}`);
               res.json({
-                cookie: `token=${token}`,
+                //cookie: `token=${token}`,
                 id: doc._id,
                 username: username,
               });
