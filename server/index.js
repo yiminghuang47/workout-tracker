@@ -2,12 +2,15 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 
-
-const allowedOrigins = ["https://gym-track.vercel.app","http://localhost:3000","https://gym-track-server.vercel.app"];
+const allowedOrigins = [
+  "https://gym-track.vercel.app",
+  "http://localhost:3000",
+  "https://gym-track-server.vercel.app",
+];
 
 const corsOptions = {
   origin: allowedOrigins,
-  credentials: true
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
@@ -66,9 +69,13 @@ app.post("/api/login", (req, res) => {
           jwt.sign({ username, id: doc._id }, secret, {}, (err, token) => {
             if (err) res.status(404).json({ err: "Login error" });
             else {
-              console.log(token)
-              res.json({cookie: `token=${token}`,id: doc._id,
-              username: username,})
+              console.log(token);
+              console.log(`token=${token}`);
+              res.json({
+                cookie: `token=${token}`,
+                id: doc._id,
+                username: username,
+              });
               /*
               res.cookie("token", token, { 
                 domain: "https://gym-track.vercel.app/", 
