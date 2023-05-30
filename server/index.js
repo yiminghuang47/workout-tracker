@@ -70,23 +70,23 @@ app.post("/api/login", (req, res) => {
             if (err) res.status(404).json({ err: "Login error" });
             else {
              // console.log(token);
-              //console.log(`token=${token}`);
-              /*
+              console.log(`token=${token}`);
+              
               res.json({
-                //cookie: `token=${token}`,
+                cookie: `token=${token}`,
                 id: doc._id,
                 username: username,
               });
-              */
               
+              /*
               res.cookie("token", token, { 
-                domain: "https://gym-track.vercel.app/", 
+                domain: "http://localhost:3000/", 
                 path: "/"
               }).json({
                 id: doc._id,
                 username: username,
               });
-              
+              */
             }
           });
         } else {
